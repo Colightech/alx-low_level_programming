@@ -23,7 +23,7 @@ void print_buffer(char *b, int size)
 	while (a < size)
 	{
 		y = size - a < 10 ? size - a : 10;
-		printf("%08x: ", a);
+		printf(" %08x: ", a);
 		for (z = 0; z < 10; z++)
 		{
 			if (z < y)
