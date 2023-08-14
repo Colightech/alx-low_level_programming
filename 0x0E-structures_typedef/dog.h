@@ -3,6 +3,9 @@
 
 /**
  * struct dog - structure type defination
+ * @name: struct element1
+ * @age: struct element2
+ * @owner: struct element3
  */
 
 struct dog
