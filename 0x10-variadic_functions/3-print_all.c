@@ -46,7 +46,7 @@ void print_all(const char * const format, ...)
 			dev = ", ";
 			x++;
 		}
-		printf("\n");
 		va_end(arglist);
 	}
+	printf("\n");
 }
