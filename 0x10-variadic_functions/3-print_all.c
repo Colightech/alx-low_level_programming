@@ -13,8 +13,6 @@ void print_all(const char * const format, ...)
 {
 	int x = 0;
 	char *str, *dev = "";
-	int ch, num;
-	float flowt;
 
 	va_list arglist;
 
@@ -27,16 +25,13 @@ void print_all(const char * const format, ...)
 			switch (format[x])
 			{
 				case 'c':
-					ch = va_arg(arglist, int);
-					printf("%s%c", dev, ch);
+					printf("%s%c", dev, va_arg(arglist, int));
 					break;
 				case 'i':
-					num = va_arg(arglist, int);
-					printf("%s%d", dev, num);
+					printf("%s%d", dev, va_arg(arglist, int));
 					break;
 				case 'f':
-					flowt = va_arg(arglist, double);
-					printf("%s%f", dev, flowt);
+					printf("%s%f", dev, va_arg(arglist, double));
 					break;
 				case 's':
 					str = va_arg(arglist, char *);
