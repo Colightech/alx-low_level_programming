@@ -40,13 +40,13 @@ void print_all(const char * const format, ...)
 					printf("%s%s", dev, str);
 					break;
 				default:
-				x++;
-				continue;
+					x++;
+					continue;
 			}
 			dev = ", ";
 			x++;
-			va_end(arglist);
 		}
 	}
 	printf("\n");
+	va_end(arglist);
 }
