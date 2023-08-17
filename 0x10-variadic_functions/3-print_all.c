@@ -12,41 +12,46 @@ void print_all(const char * const format, ...)
 
 {
 	int x = 0;
-	char *str;
+	char *str, *dev = "";
 	char ch;
-	int num;
 	float flowt;
+	int num;
 
 	va_list arglist;
 
 	va_start(arglist, format);
 
-	while (format[x] != '\0')
+	if (format)
 	{
-		if (format[x] == 'c')
+		while (format[x])
 		{
-			ch = va_arg(arglist, int);
-			printf("%c, ", ch);
+			switch (format[x])
+			{
+				case 'c':
+					ch = va_arg(arglist, int);
+					printf("%s%c", dev, ch);
+					break;
+				case 'i':
+					num = va_arg(arglist, int);
+					printf("%s%d", dev, num);
+					break;
+				case 'f':
+					flowt = va_arg(arglist, double);
+					printf("%s%f", dev, flowt);
+					break;
+				case 's':
+					str = va_arg(arglist, char *);
+					if (str == NULL)
+					printf("(nil)");
+					printf("%s%s", dev, str);
+					break;
+				default:
+				x++;
+				continue;
+			}
+			dev = ", ";
+			x++;
 		}
-		else if (format[x] == 'i')
-		{
-			num = va_arg(arglist, int);
-			printf("%i, ", num);
-		}
-		else if (format[x] == 'f')
-		{
-			flowt = va_arg(arglist, double);
-			printf("%f, ", flowt);
-		}
-		else if (format[x] == 's')
-		{
-			str = va_arg(arglist, char *);
-			printf("%s ", str);
-		}
-		if (str == NULL)
-			printf("(nil)");
-		x++;
-
 		va_end(arglist);
 	}
 	printf("\n");
