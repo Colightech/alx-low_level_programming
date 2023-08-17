@@ -18,8 +18,6 @@ void print_all(const char * const format, ...)
 
 	va_start(arglist, format);
 
-	if (format)
-	{
 		while (format[x])
 		{
 			switch (format[x])
@@ -46,7 +44,6 @@ void print_all(const char * const format, ...)
 			dev = ", ";
 			x++;
 		}
-	}
-	printf("\n");
-	va_end(arglist);
+		printf("\n");
+		va_end(arglist);
 }
