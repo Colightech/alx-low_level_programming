@@ -25,7 +25,9 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 
 	/* If the list is initially empty, set the new node as the head */
 	if (*head == NULL)
-	*head = new_node;
+	{
+		*head = new_node;
+	}
 
 	/* Traverse the list to find the last node */
 	while (current->next)
