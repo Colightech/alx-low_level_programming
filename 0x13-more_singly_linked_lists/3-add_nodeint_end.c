@@ -37,5 +37,6 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 	/* Update the next pointer of the last node to point to the new node */
 	current->next = new_node;
 
+	free(new_node);
 	return (new_node);
 }
