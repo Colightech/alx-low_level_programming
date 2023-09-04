@@ -31,7 +31,7 @@ void error_check(int file_from, int file_to, char *argv[])
 
 int main(int argc, char *argv[])
 {
-	int rd, wrt;
+	ssize_t rd, wrt;
 	int file_to;
 	int file_from;
 	int err;
