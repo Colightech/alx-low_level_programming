@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 		rd = read(file_from, buffer, 1024);
 		if (rd == -1)
 			error_check(-1, 0, argv);
-		wrt = write(file_to, buffer, 1024);
+		wrt = write(file_to, buffer, rd);
 		if (wrt == -1)
 			error_check(0, -1, argv);
 	}
