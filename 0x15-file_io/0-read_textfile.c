@@ -1,21 +1,5 @@
 #include "main.h"
 
-void _puts(char *str);
-
-/**
- * _puts - function that print string
- * @str: string to print
- * Return: void
- */
-void _puts(char *str)
-{
-	int x;
-
-	for (x = 0; str[x] != '\0'; x++)
-		_putchar(str[x]);
-	_putchar('\n');
-}
-
 /**
  * read_textfile - function that reads a text file
  *  and prints it to the POSIX standard output.
@@ -26,26 +10,25 @@ void _puts(char *str)
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	FILE *fptr;
-	unsigned int x;
+	int fdtor;
+	ssize_t rd, wr;
 	char *buffer;
 
-	if (filename == NULL)
+	if (!filename)
 		return (0);
 
-	buffer = malloc(sizeof(letters));
+	buffer = malloc(sizeof(char) * letters);
 	if (buffer == NULL)
 		return (0);
 
-	fptr = fopen("filename", "r");
-	if (fptr == NULL)
+	fdtor = open(filename, O_RDONLY);
+	if (fdtor == -1)
 		return (0);
-	for (x = 0; x <= letters; x++)
-	{
-		fgets(buffer, letters, fptr);
-		_puts(buffer);
-	}
-	fclose(fptr);
+	
+	rd = read(fdtor, buffer, letters);
+	wr = write(STDOUT_FILENO, buffer, rd);
+
+	close(fdtor);
 	free(buffer);
-	return (0);
+	return (wr);
 }
