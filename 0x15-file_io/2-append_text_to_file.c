@@ -22,8 +22,8 @@ int append_text_to_file(const char *filename, char *text_content)
 	if (text_content)
 	{
 		for (n = 0; text_content[n] != '\0'; n++)
-		append = write(fdtor, text_content, n)
-		if (apend == -1)
+		appnd = write(fdtor, text_content, n);
+		if (appnd == -1)
 			return (-1);
 	}
 
